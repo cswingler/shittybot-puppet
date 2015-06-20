@@ -50,7 +50,8 @@ class shittybot {
     ensure => present,
     comment => 'A bad IRC bot.',
     home => $shittybot_home,
-    managehome => true
+    managehome => true,
+    shell => '/bin/bash'
   }
 
   # Okay, here's where we start getting into interesting bits. This requires puppetlabs/vcsrepo.
@@ -64,7 +65,15 @@ class shittybot {
     require => User['shittybot']
   }
 
+  # And then check out the procs:
 
+  vcsrepo { "${shittybot_home}/exec/state":
+    ensure => present,
+    provider => 'git',
+    source => 'https://github.com/baileybot/smeggdrop-proc.git',
+    owner => "shittybot",
+    require => Vcsrepo["${shittybot_home}/exec"]
+  }
 }
 
 
