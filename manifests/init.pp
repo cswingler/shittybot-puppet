@@ -17,7 +17,8 @@ class shittybot {
     'libdata-dump-perl',
     'libconfig-any-perl',
     'libconfig-general-perl',
-    'libnet-scp-expect-perl'] 
+    'libnet-scp-expect-perl', 
+    'libconfig-jfdi-perl'] 
   # libparent-perl is part of perl-modules, and meltwater/cpan adds perl-modules.
 
   $perl_cpanpkgs = [
